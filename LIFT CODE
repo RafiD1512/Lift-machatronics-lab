@@ -1,1 +1,28 @@
-yo
+
+int dig1=8;
+int dig2=9;
+int dig3=2;
+
+int MSD=0;
+int Middle=0;
+int LSD=0;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(dig1,INPUT);
+  pinMode(dig2,INPUT);
+  pinMode(dig3,INPUT);
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+LSD=digitalRead(dig1);
+Middle=digitalRead(dig2);
+MSD=digitalRead(dig3);
+int flooreg=(LSD)+(Middle<<1)+(MSD<<2); //turns binary into decimal by shifitng places?
+                                       //instead of !+1+1 = 3 1+1+1 = 111(binary number)
+Serial.println(flooreg);
+delay(1000);
+}
