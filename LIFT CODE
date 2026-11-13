@@ -50,7 +50,7 @@ void loop() {
 
 //to check the actual value for each button
 
-  delay(500);}
+  delay(500);
 LSD=digitalRead(dig1);
 Middle=digitalRead(dig2);
 MSD=digitalRead(dig3);
@@ -74,7 +74,4 @@ if (floorReg == 7){
   digitalWrite(14,HIGH);
   digitalWrite(15,HIGH);
   }
-}
-
-
 }
