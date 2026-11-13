@@ -1,0 +1,16 @@
+int Open=A3;
+int Close=A4;
+
+void setup() {
+pinMode(Open,INPUT);
+pinMode(Open,INPUT);
+Serial.begin(9600);
+}
+void loop() {
+int Openstate=analogRead(Open);
+int Closestate=analogRead(Close);
+
+Serial.print(Openstate);
+Serial.println(Closestate);
+delay(500);
+}
