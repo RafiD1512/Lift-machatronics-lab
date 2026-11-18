@@ -1,13 +1,15 @@
 int Open=A3;
 int Close=A4;
 int Door=A0;
-int Car=A1;   //floor call buttons, insdie lift
+int Car=A1;   //floor call buttons, inside lift
 int Lift=A2;  //Landing call buttons, outside up/down
 
 void setup() {
 pinMode(Open,INPUT);
 pinMode(Close,INPUT);
-                                                       // FINISH THE PINMODE UP FOR EACH OF THEM CBA RN.
+pinMode(Door,INPUT);
+pinMode(Car,INPUT);
+pinMode(Lift,INPUT);
 Serial.begin(9600);
 }
 void loop() {
@@ -17,7 +19,7 @@ int doorState=analogRead(Door);
 int carState=analogRead(Car);
 int liftState=analogRead(Lift);
 
-Serial.print("Door: ";
+Serial.print("Door: ");
 Serial.print(doorState);
 Serial.print("  Car: ");
 Serial.print(Car);
