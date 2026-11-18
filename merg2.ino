@@ -1,0 +1,99 @@
+int dig1=8;
+int dig2=9;
+int dig3=2;
+
+int MSD=0;
+int Middle=0;
+int LSD=0;
+int Position=0;
+const int buttonPin = A2; // Define the analog pin connected to the button
+int buttonState = 0; // Variable to store the button state
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(dig1,INPUT);
+  pinMode(dig2,INPUT);
+  pinMode(dig3,INPUT);
+  Serial.begin(9600);
+  pinMode(14,OUTPUT);
+  pinMode(15,OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+    int sensorValue = analogRead(buttonPin); // Read the analog value from the button pin
+
+  delay(100);  // Optional delay to debounce the button
+   
+  if (sensorValue >= 170 && sensorValue < 300) {
+
+    buttonState = 1; }
+
+  if (sensorValue >=300 && sensorValue < 600)
+
+   { buttonState = 2; }
+
+  if (sensorValue >=600)
+
+   { buttonState = 3; }
+
+  if (sensorValue <=100)
+
+   { buttonState = 0;}
+
+  Serial.println(sensorValue);  // printout of the voltage read depending on the button pressed
+
+  Serial.println(buttonState);
+
+//Serial.println(sensorValue);
+
+//to check the actual value for each button
+
+  delay(500);
+LSD=digitalRead(dig1);
+Middle=digitalRead(dig2);
+MSD=digitalRead(dig3);
+int floorReg=(LSD)+(Middle<<1)+(MSD<<2); //turns binary into decimal by shifitng places?
+                                       //instead of !+1+1 = 3 1+1+1 = 111(binary number)
+Serial.println(floorReg);
+delay(1000);
+
+if (floorReg == 1){
+  digitalWrite(14,LOW);
+  digitalWrite(15,HIGH);
+  Position = 1;
+  }
+ 
+if (floorReg == 4){
+  digitalWrite(14,HIGH);
+  digitalWrite(15,LOW);
+  Position = 2;
+  }
+
+if (floorReg == 7){
+  digitalWrite(14,HIGH);
+  digitalWrite(15,HIGH);
+  Position = 3;
+  }
+if (buttonState == Position){
+  Serial.print(" open door");
+  }
+if (buttonState < Position){
+  Serial.print("go down");
+  }
+if (buttonState > Position){
+  Serial.print("go up");
+  }
+}
+
+
+
+//int func(const int number){
+//  int i = 0;g
+//  //nonse  
+//  return i;
+//  }
+//
+// number = func(3);
+// number = 3;
