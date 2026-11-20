@@ -18,7 +18,6 @@ int floorPos(int x, int y, int z){
   return floorReg;
 }
 
-int CallLift(
 
 void setup() {
   // put your setup code here, to run once:
