@@ -9,8 +9,7 @@ int Position = 0;
 const int buttonPin = A2; // Analog pin connected to the buttons
 int buttonState = 0;      // Stores which button is pressed (0 = none)
 
-bool door_open =  false; //light gate detects if the door is open or closed
-bool door_response = false;
+
 
 
 // Reads the button pin and works out which button is pressed
