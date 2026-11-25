@@ -29,8 +29,10 @@ int readButton(int pin) {
     buttonState = 0;
   }
 
-  Serial.println(sensorValue);  // Test print: voltage read for the pressed button
-  Serial.println(buttonState);  // Test print: button number
+  Serial.println("desired button value:");
+  seerial.print(sensorValue);  // Test print: voltage read for the pressed button
+  Serial.println("desired floor is:)
+  serial.print(buttonState);  // Test print: button number
   return buttonState;
 }
 
