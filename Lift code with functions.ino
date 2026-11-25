@@ -10,9 +10,6 @@ int Position = 0;
 const int buttonPin = A2; // Analog pin connected to the buttons
 int buttonState = 0;      // Stores which button is pressed (0 = none)
 
-bool door_open =  false; //light gate detects if the door is open or closed
-bool door_response = false;
-
 
 // Reads the button pin and works out which button is pressed
 int readButton(int pin) {
@@ -81,21 +78,6 @@ void liftAction(int requested, int current) {
 }
 
 
-void Opening_door() {
-    if (door_response == true && door_open == false) { 
-        motor1.run(FORWARD); //will change if the motor code doesn't work like this
-    }
-    else if (door_open == true){
-            door_response = false;
-            motor1.run(RELEASE);
-            delay(1000);
-            motor1.run(FORWARD);
-    }
-    else if (door_open == false && door_response == false) {
-        motor1.run(RELEASE);
-    }
-}
-
 void setup() {
   Serial.begin(9600);
   pinMode(dig1, INPUT);
@@ -110,6 +92,9 @@ void loop() {
   delay(500);
 
   int floorReg = floorPos(dig1, dig2, dig3);
+  liftposition = setPosition(int floorReg);
+    
+  
   Serial.println(floorReg);  // Test print: floor reading as a decimal
   delay(1000);
 
