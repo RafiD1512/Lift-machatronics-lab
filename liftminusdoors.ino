@@ -25,7 +25,7 @@ int readButton(int pin) {
   if (sensorValue >= 600) {
     buttonState = 7;
   }
-  if (sensorValue <= 100) {
+  if (sensorValue < 100) {
     buttonState = 0;
   }
 
@@ -99,7 +99,7 @@ Serial.println(insideValue);
   if (insideValue >= 600) {
     insideState = 7;
   }
-  if (insideValue <= 300) {
+  if (insideValue < 300) {
     insideState = 0;
     return insideState;
   }
