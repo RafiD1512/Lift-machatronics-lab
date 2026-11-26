@@ -146,7 +146,7 @@ void loop() {
   int liftposition = setPosition(floorReg);
   liftAction(RequestedPosition,floorReg);
   int GointTo = insideButtons(inside);
-  Passenger(GointTo,floorReg);
+  liftAction(GointTo,floorReg);
   Serial.println(floorReg);  // Test print: floor reading as a decimal
   delay(1000);
 }
