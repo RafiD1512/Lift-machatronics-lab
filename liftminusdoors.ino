@@ -20,10 +20,10 @@ int readButton(int pin) {
     buttonState = 1;
   }
   if (sensorValue >= 300 && sensorValue < 600) {
-    buttonState = 2;
+    buttonState = 4;
   }
   if (sensorValue >= 600) {
-    buttonState = 3;
+    buttonState = 7;
   }
   if (sensorValue <= 100) {
     buttonState = 0;
@@ -69,12 +69,19 @@ int setPosition(int floorReg) {
 void liftAction(int requested, int current) {
   if (requested == current) {
     Serial.print(" open door");
+    // stop motor completely
+    //insert door code
   }
   else if (requested < current) {
     Serial.print("go down");
+    // MOTOR DOWN 
+    //if current=destination-1
+    //set motor speed to 1/2
+    
   }
   else if (requested > current) {
     Serial.print("go up");
+    //motor up
   }
 }
 int insideButtons(int a){
@@ -85,10 +92,10 @@ Serial.println(insideValue);
     insideState = 1;
   }
   if (insideValue >= 500 && insideValue < 600) {
-    insideState = 2;
+    insideState = 4;
   }
   if (insideValue >= 600) {
-    insideState = 3;
+    insideState = 7;
   }
   if (insideValue <= 300) {
     insideState = 0;
@@ -99,12 +106,19 @@ Serial.println(insideValue);
 void Passenger(int destination,int current){       // tells lift where to go after inside buttons pressed
   if (destination == current) {
     Serial.print(" open door");
+    // stop motor completely
+    //insert door code
   }
   else if (destination < current) {
     Serial.print("go down");
+    // MOTOR DOWN 
+    //if current=destination-1
+    //set motor speed to 1/2
   }
   else if (destination > current) {
     Serial.print("go up");
+    //motor up
+    
   }
 }
 
@@ -125,10 +139,10 @@ void loop() {
   delay(500);
 
   int floorReg = floorPos(dig1, dig2, dig3);
-  int liftposition = setPosition( floorReg);
-  liftAction(RequestedPosition,liftposition);
+  int liftposition = setPosition(floorReg);
+  liftAction(RequestedPosition,floorReg);
   int GointTo = insideButtons(inside);
-  Passenger(GointTo,liftposition);
+  Passenger(GointTo,floorReg);
   Serial.println(floorReg);  // Test print: floor reading as a decimal
   delay(1000);
 }
