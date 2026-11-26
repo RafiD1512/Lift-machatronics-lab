@@ -70,10 +70,11 @@ void liftAction(int requested, int current) {
   if (requested == current) {
     Serial.print(" open door");
     // stop motor completely
-    //insert door code
+    //insert open door code
   }
   else if (requested < current) {
     Serial.print("go down");
+    //insert close door code
     // MOTOR DOWN 
     //if current=destination-1
     //set motor speed to 1/2
@@ -81,6 +82,7 @@ void liftAction(int requested, int current) {
   }
   else if (requested > current) {
     Serial.print("go up");
+   //insert close door
     //motor up
   }
 }
@@ -107,16 +109,18 @@ void Passenger(int destination,int current){       // tells lift where to go aft
   if (destination == current) {
     Serial.print(" open door");
     // stop motor completely
-    //insert door code
+    //insert open door code
   }
   else if (destination < current) {
     Serial.print("go down");
+    //insert close door code
     // MOTOR DOWN 
     //if current=destination-1
     //set motor speed to 1/2
   }
   else if (destination > current) {
     Serial.print("go up");
+    //insert close door
     //motor up
     
   }
