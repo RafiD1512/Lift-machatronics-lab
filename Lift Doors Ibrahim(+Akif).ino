@@ -13,7 +13,7 @@ int Closed = analogRead(DoorClosedSensor);
 if (doorState==1){ // opening
   digitalWrite(DoorDir, HIGH);
     analogWrite(DoorPwm, 255);
-    if ((Open < 150 && Open > 170) && millis() - doorTimer > 5000) { // used cuz delay() stops all programs from running in the duration, including any buttons pressed during the delay, while 
+    if ((Open < 150 || Open > 170) || millis() - doorTimer > 5000) { // used cuz delay() stops all programs from running in the duration, including any buttons pressed during the delay, while 
 // milli doesnt, it allows background processes to still run 
       analogWrite(DoorPwm, 0);
       doorState=2;
@@ -27,7 +27,7 @@ if (doorState==1){ // opening
   if (doorState==3){ //closing
    digitalWrite(DoorDir, LOW);
     analogWrite(DoorPwm, 255);
-    if ((Closed < 150 && Closed > 170) && millis() - doorTimer > 5000) {
+    if ((Closed < 150 || Closed > 170) || millis() - doorTimer > 5000) {
       analogWrite(DoorPwm, 0);
       doorState = 0;
     }
