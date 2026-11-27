@@ -25,9 +25,8 @@ int readButton(int pin) {
   if (sensorValue >= 600) {
     buttonState = 7;
   }
-  if (sensorValue < 100) {
-    buttonState = 0;
-  }
+
+  
 
  // Test print: voltage read for the pressed button
   Serial.println("desired floor is:");
@@ -99,10 +98,9 @@ Serial.println(insideValue);
   if (insideValue >= 600) {
     insideState = 7;
   }
-  if (insideValue < 300) {
-    insideState = 0;
-    return insideState;
-  }
+
+  return insideState;
+  
 }
 
 void Passenger(int destination,int current){       // tells lift where to go after inside buttons pressed
