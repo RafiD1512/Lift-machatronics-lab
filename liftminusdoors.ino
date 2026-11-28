@@ -70,6 +70,8 @@ void liftAction(int requested, int current) {
     Serial.print(" open door");
     // stop motor completely
     //insert open door code
+    buttonstate = 0;
+    inside state =0;
   }
   else if (requested < current && requested > 0) {
     Serial.print("go down");
